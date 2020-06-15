@@ -31,14 +31,14 @@ namespace ConsoleApplication3
                         Console.Clear();
                         new AccountController().Register();
                         Console.WriteLine("Register Form");
-                        
                         break;
                     case 2:
                         Console.Clear();
                         Account loginAccount = new AccountController().Login();
                         Console.WriteLine("Login Form");
                         currentAccount = loginAccount;
-                        Console.WriteLine(currentAccount);
+                        // Console.WriteLine(loginAccount);
+                        // Console.WriteLine(currentAccount);
                         break;
                     default:
                         Console.WriteLine("Error");
@@ -46,8 +46,8 @@ namespace ConsoleApplication3
                         break;
                 }
             }
-            Console.WriteLine(currentAccount.Role);
-            Console.WriteLine((int)currentAccount.Role);
+            // Console.WriteLine(currentAccount.Role);
+            // Console.WriteLine((int)currentAccount.Role);
             if ((int)currentAccount.Role == 1)
             {
                 Console.Clear();

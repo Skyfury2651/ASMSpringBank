@@ -365,16 +365,17 @@
            catch (Exception e)
            {
            }
-           Console.WriteLine("Tran hiện tại : " + currentPage);
+           Console.WriteLine("Trang hiện tại : " + currentPage);
            Console.WriteLine("---------");
            // Console.WriteLine("Press '<' to back to previous page");
            Console.WriteLine("Bấm '<' để quay lại trang trước");
            // Console.WriteLine("Press '>' to move to next page");
            Console.WriteLine("Bấm '>' sang trang tiếp theo");
-           var keyword = Console.ReadLine();
+           Console.WriteLine("Bấm 'ESC' để thoát ");
+           var keyword = Console.ReadKey(true).Key;
            switch (keyword)
            {
-               case "<":
+               case ConsoleKey.LeftArrow:
                    i -= pageSize;
                    
                    if (i < 0)
@@ -389,7 +390,7 @@
                        TransactionSearch(i,account,currentPage-1);
                    }
                    break;
-               case ">":
+               case ConsoleKey.RightArrow:
                    i += pageSize;
                    // Console.WriteLine(i);
                    // Console.WriteLine(pageItem);
@@ -406,7 +407,7 @@
                    }
                    
                    break;
-               case "ESC":
+               case ConsoleKey.Escape:
                    new Menu().MenuUser(account);
                    break;
                default:
