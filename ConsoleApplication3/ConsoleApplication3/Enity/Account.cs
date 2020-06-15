@@ -16,14 +16,14 @@
         public Role Role { get; set; }
         public Status Status { get; set; }
         
-        public string createAt { get; set; }
-        public string updateAt { get; set; }
+        public string CreatedAt { get; set; }
+        public string UpdatedAt { get; set; }
 
         public override string ToString()
         {
             string return_string = ID + " | " + AccountNumber + " | " + Balance +
                                    " | " + Username + " | " + PasswordHash + " | " + Salt + " | ";
-            string final_return_string = return_string + Fullname + " | " + Email + " | " + PhoneNumber + " | " + Role +" | "+Status;
+            string final_return_string = return_string + Fullname + " | " + Email + " | " + PhoneNumber + " | " + Role +" | "+ Status;
             return final_return_string;
         }
     }

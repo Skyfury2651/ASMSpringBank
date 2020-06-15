@@ -14,14 +14,14 @@ namespace ConsoleApplication1.Model
             var cnn = ConnectionHelper.getConnection();
             List<Account> accountList = new List<Account>();
             cnn.Open();
-            var cmd = new MySqlCommand($"select * from `useraccount` where Role = 0",cnn);
+            var cmd = new MySqlCommand($"select * from `useraccount` where Role = 0", cnn);
             var reader = cmd.ExecuteReader();
             while (reader.Read())
             {
                 account = new Account()
                 {
-                    ID =  reader.GetString("ID"),
-                    AccountNumber =reader.GetString("AccountNumber"),
+                    ID = reader.GetString("ID"),
+                    AccountNumber = reader.GetString("AccountNumber"),
                     Balance = reader.GetDouble("Balance"),
                     Username = reader.GetString("Username"),
                     PasswordHash = reader.GetString("PasswordHash"),
@@ -31,11 +31,12 @@ namespace ConsoleApplication1.Model
                     PhoneNumber = reader.GetString("PhoneNumber"),
                     Status = (Status) reader.GetInt32("Status"),
                     Role = (Role) reader.GetUInt32("Role"),
-                    createAt = reader.GetMySqlDateTime("createAt").ToString(),
-                    updateAt = reader.GetMySqlDateTime("updateAt").ToString()
+                    CreatedAt = reader.GetMySqlDateTime("CreatedAt").ToString(),
+                    UpdatedAt = reader.GetMySqlDateTime("UpdatedAt").ToString()
                 };
                 accountList.Add(account);
             }
+
             reader.Close();
             cnn.Close();
             return accountList;
@@ -51,10 +52,10 @@ namespace ConsoleApplication1.Model
                 // 2. Tạo transaction
                 // 2.1 Lấy thông tin mới nhất của tài khoản - > select lại thôn tin
                 var stringCmdGetAccount = $"Select * from `transaction_history`";
-                var cmdGetAccount = new MySqlCommand(stringCmdGetAccount,cnn);
+                var cmdGetAccount = new MySqlCommand(stringCmdGetAccount, cnn);
                 var reader = cmdGetAccount.ExecuteReader();
                 List<Transaction> list = new List<Transaction>();
-                while(reader.Read())
+                while (reader.Read())
                 {
                     try
                     {
@@ -66,9 +67,9 @@ namespace ConsoleApplication1.Model
                             Fee = reader.GetDouble("Fee"),
                             Message = reader.GetString("Message"),
                             Amount = reader.GetDouble("Amount"),
-                            CreateAt = (DateTime) reader.GetMySqlDateTime("createAt"),
-                            UpdateAt = (DateTime) reader.GetMySqlDateTime("updateAt"),
-                            TransactionStatus =(TransactionStatus) reader.GetInt32("TransactionStatus"),
+                            CreatedAt = (DateTime) reader.GetMySqlDateTime("CreatedAt"),
+                            UpdatedAt = (DateTime) reader.GetMySqlDateTime("UpdatedAt"),
+                            TransactionStatus = (TransactionStatus) reader.GetInt32("TransactionStatus"),
                         });
                     }
                     catch (Exception e)
@@ -77,6 +78,7 @@ namespace ConsoleApplication1.Model
                         throw;
                     }
                 }
+
                 cnn.Close();
                 return list;
             }
@@ -96,17 +98,17 @@ namespace ConsoleApplication1.Model
                 // 2. Tạo transaction
                 // 2.1 Lấy thông tin mới nhất của tài khoản - > select lại thôn tin
                 var stringCmdGetAccount = $"Select * from `useraccount` where Fullname = '{name}'";
-                var cmdGetAccount = new MySqlCommand(stringCmdGetAccount,cnn);
+                var cmdGetAccount = new MySqlCommand(stringCmdGetAccount, cnn);
                 var reader = cmdGetAccount.ExecuteReader();
                 List<Account> list = new List<Account>();
-                while(reader.Read())
+                while (reader.Read())
                 {
                     try
                     {
                         list.Add(new Account()
                         {
-                            ID =  reader.GetString("ID"),
-                            AccountNumber =reader.GetString("AccountNumber"),
+                            ID = reader.GetString("ID"),
+                            AccountNumber = reader.GetString("AccountNumber"),
                             Balance = reader.GetDouble("Balance"),
                             Username = reader.GetString("Username"),
                             PasswordHash = reader.GetString("PasswordHash"),
@@ -116,8 +118,8 @@ namespace ConsoleApplication1.Model
                             PhoneNumber = reader.GetString("PhoneNumber"),
                             Status = (Status) reader.GetInt32("Status"),
                             Role = (Role) reader.GetUInt32("Role"),
-                            createAt = reader.GetMySqlDateTime("createAt").ToString(),
-                            updateAt = reader.GetMySqlDateTime("updateAt").ToString()
+                            CreatedAt = reader.GetMySqlDateTime("CreatedAt").ToString(),
+                            UpdatedAt = reader.GetMySqlDateTime("UpdatedAt").ToString()
                         });
                     }
                     catch (Exception e)
@@ -126,6 +128,7 @@ namespace ConsoleApplication1.Model
                         throw;
                     }
                 }
+
                 cnn.Close();
                 return list;
             }
@@ -145,17 +148,17 @@ namespace ConsoleApplication1.Model
                 // 2. Tạo transaction
                 // 2.1 Lấy thông tin mới nhất của tài khoản - > select lại thôn tin
                 var stringCmdGetAccount = $"Select * from `useraccount` where `AccountNumber` = '{accountNumber}'";
-                var cmdGetAccount = new MySqlCommand(stringCmdGetAccount,cnn);
+                var cmdGetAccount = new MySqlCommand(stringCmdGetAccount, cnn);
                 var reader = cmdGetAccount.ExecuteReader();
                 List<Account> list = new List<Account>();
-                while(reader.Read())
+                while (reader.Read())
                 {
                     try
                     {
                         list.Add(new Account()
                         {
-                            ID =  reader.GetString("ID"),
-                            AccountNumber =reader.GetString("AccountNumber"),
+                            ID = reader.GetString("ID"),
+                            AccountNumber = reader.GetString("AccountNumber"),
                             Balance = reader.GetDouble("Balance"),
                             Username = reader.GetString("Username"),
                             PasswordHash = reader.GetString("PasswordHash"),
@@ -165,8 +168,8 @@ namespace ConsoleApplication1.Model
                             PhoneNumber = reader.GetString("PhoneNumber"),
                             Status = (Status) reader.GetInt32("Status"),
                             Role = (Role) reader.GetUInt32("Role"),
-                            createAt = reader.GetMySqlDateTime("createAt").ToString(),
-                            updateAt = reader.GetMySqlDateTime("updateAt").ToString()
+                            CreatedAt = reader.GetMySqlDateTime("CreatedAt").ToString(),
+                            UpdatedAt = reader.GetMySqlDateTime("UpdatedAt").ToString()
                         });
                     }
                     catch (Exception e)
@@ -175,6 +178,7 @@ namespace ConsoleApplication1.Model
                         throw;
                     }
                 }
+
                 cnn.Close();
                 return list;
             }
@@ -194,17 +198,17 @@ namespace ConsoleApplication1.Model
                 // 2. Tạo transaction
                 // 2.1 Lấy thông tin mới nhất của tài khoản - > select lại thôn tin
                 var stringCmdGetAccount = $"Select * from `useraccount` where `PhoneNumber` = '{phoneNumber}'";
-                var cmdGetAccount = new MySqlCommand(stringCmdGetAccount,cnn);
+                var cmdGetAccount = new MySqlCommand(stringCmdGetAccount, cnn);
                 var reader = cmdGetAccount.ExecuteReader();
                 List<Account> list = new List<Account>();
-                while(reader.Read())
+                while (reader.Read())
                 {
                     try
                     {
                         list.Add(new Account()
                         {
-                            ID =  reader.GetString("ID"),
-                            AccountNumber =reader.GetString("AccountNumber"),
+                            ID = reader.GetString("ID"),
+                            AccountNumber = reader.GetString("AccountNumber"),
                             Balance = reader.GetDouble("Balance"),
                             Username = reader.GetString("Username"),
                             PasswordHash = reader.GetString("PasswordHash"),
@@ -214,8 +218,8 @@ namespace ConsoleApplication1.Model
                             PhoneNumber = reader.GetString("PhoneNumber"),
                             Status = (Status) reader.GetInt32("Status"),
                             Role = (Role) reader.GetUInt32("Role"),
-                            createAt = reader.GetMySqlDateTime("createAt").ToString(),
-                            updateAt = reader.GetMySqlDateTime("updateAt").ToString()
+                            CreatedAt = reader.GetMySqlDateTime("CreatedAt").ToString(),
+                            UpdatedAt = reader.GetMySqlDateTime("UpdatedAt").ToString()
                         });
                     }
                     catch (Exception e)
@@ -224,6 +228,7 @@ namespace ConsoleApplication1.Model
                         throw;
                     }
                 }
+
                 cnn.Close();
                 return list;
             }
@@ -239,8 +244,9 @@ namespace ConsoleApplication1.Model
             DateTime dateTime = DateTime.Now;
             String currentDate = dateTime.ToString("yyyy-MM-dd HH:mm:ss");
             cnn.Open();
-            var stringCommand = "INSERT INTO `useraccount`(`ID`,`AccountNumber`, `Balance`, `Username`, `PasswordHash`, `Salt`, `Fullname`, `Email`,`PhoneNumber`, `Role`, `Status`,`createAt`,`updateAt`) " +
-                                $"VALUES ('NULL','{account.AccountNumber}','{account.Balance}','{account.Username}','{account.PasswordHash}','{account.Salt}','{account.Fullname}','{account.Email}','{account.PhoneNumber}','NULL','{(int) account.Status}','{currentDate}','{currentDate}')";
+            var stringCommand =
+                "INSERT INTO `useraccount`(`ID`,`AccountNumber`, `Balance`, `Username`, `PasswordHash`, `Salt`, `Fullname`, `Email`,`PhoneNumber`, `Role`, `Status`,`CreatedAt`,`UpdatedAt`) " +
+                $"VALUES ('NULL','{account.AccountNumber}','{account.Balance}','{account.Username}','{account.PasswordHash}','{account.Salt}','{account.Fullname}','{account.Email}','{account.PhoneNumber}','NULL','{(int) account.Status}','{currentDate}','{currentDate}')";
             MySqlCommand cmd =
                 new MySqlCommand(stringCommand, cnn);
             cmd.ExecuteNonQuery();
@@ -258,7 +264,8 @@ namespace ConsoleApplication1.Model
                 String currentDate = dateTime.ToString("yyyy-MM-dd HH:mm:ss");
                 cnn.Open();
                 // Console.WriteLine(status);
-                var stringCommand = $"UPDATE `useraccount` SET `Status` = '{status}' WHERE `useraccount`.`AccountNumber` = '{accountNumber}';";
+                var stringCommand =
+                    $"UPDATE `useraccount` SET `Status` = '{status}' WHERE `useraccount`.`AccountNumber` = '{accountNumber}';";
                 MySqlCommand cmd =
                     new MySqlCommand(stringCommand, cnn);
                 cmd.ExecuteNonQuery();
@@ -282,11 +289,12 @@ namespace ConsoleApplication1.Model
                 cnn.Open();
                 // 2. Tạo transaction
                 // 2.1 Lấy thông tin mới nhất của tài khoản - > select lại thôn tin
-                var stringCmdGetAccount = $"Select * from `transaction_history` WHERE `SenderAccountNumber` = '{accountNumber}' OR `ReceiverAccountNumber` = '{accountNumber}'";
-                var cmdGetAccount = new MySqlCommand(stringCmdGetAccount,cnn);
+                var stringCmdGetAccount =
+                    $"Select * from `transaction_history` WHERE `SenderAccountNumber` = '{accountNumber}' OR `ReceiverAccountNumber` = '{accountNumber}'";
+                var cmdGetAccount = new MySqlCommand(stringCmdGetAccount, cnn);
                 var reader = cmdGetAccount.ExecuteReader();
                 List<Transaction> list = new List<Transaction>();
-                while(reader.Read())
+                while (reader.Read())
                 {
                     try
                     {
@@ -298,9 +306,9 @@ namespace ConsoleApplication1.Model
                             Fee = reader.GetDouble("Fee"),
                             Message = reader.GetString("Message"),
                             Amount = reader.GetDouble("Amount"),
-                            CreateAt = (DateTime) reader.GetMySqlDateTime("createAt"),
-                            UpdateAt = (DateTime) reader.GetMySqlDateTime("updateAt"),
-                            TransactionStatus =(TransactionStatus) reader.GetInt32("TransactionStatus"),
+                            CreatedAt = (DateTime) reader.GetMySqlDateTime("CreatedAt"),
+                            UpdatedAt = (DateTime) reader.GetMySqlDateTime("UpdatedAt"),
+                            TransactionStatus = (TransactionStatus) reader.GetInt32("TransactionStatus"),
                         });
                     }
                     catch (Exception e)
@@ -309,6 +317,7 @@ namespace ConsoleApplication1.Model
                         throw;
                     }
                 }
+
                 cnn.Close();
                 return list;
             }
@@ -327,8 +336,9 @@ namespace ConsoleApplication1.Model
                 cnn.Open();
                 // 2. Tạo transaction
                 // 2.1 Lấy thông tin mới nhất của tài khoản - > select lại thôn tin
-                var stringCmdGetAccount = $"UPDATE `useraccount` SET `Fullname` = '{account.Fullname}', `Email` = '{account.Email}', `PhoneNumber` = '{account.PhoneNumber}' WHERE `AccountNumber` = '{account.AccountNumber}';";
-                var cmdGetAccount = new MySqlCommand(stringCmdGetAccount,cnn);
+                var stringCmdGetAccount =
+                    $"UPDATE `useraccount` SET `Fullname` = '{account.Fullname}', `Email` = '{account.Email}', `PhoneNumber` = '{account.PhoneNumber}' WHERE `AccountNumber` = '{account.AccountNumber}';";
+                var cmdGetAccount = new MySqlCommand(stringCmdGetAccount, cnn);
                 cmdGetAccount.ExecuteNonQuery();
                 cnn.Close();
                 return true;
@@ -347,14 +357,14 @@ namespace ConsoleApplication1.Model
                 var cnn = ConnectionHelper.getConnection();
                 cnn.Open();
                 // 2. Tạo transaction
-                var stringCmdGetAccount = $"UPDATE `useraccount` SET `PasswordHash` = '{account.PasswordHash}', `Salt` = '{account.Salt}' WHERE `AccountNumber` = '{account.AccountNumber}';";
-                var cmdGetAccount = new MySqlCommand(stringCmdGetAccount,cnn);
+                var stringCmdGetAccount =
+                    $"UPDATE `useraccount` SET `PasswordHash` = '{account.PasswordHash}', `Salt` = '{account.Salt}' WHERE `AccountNumber` = '{account.AccountNumber}';";
+                var cmdGetAccount = new MySqlCommand(stringCmdGetAccount, cnn);
                 cmdGetAccount.ExecuteNonQuery();
                 cnn.Close();
             }
             catch (Exception e)
             {
-                
             }
         }
     }

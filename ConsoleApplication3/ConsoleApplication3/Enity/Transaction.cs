@@ -11,20 +11,32 @@ namespace ConsoleApplication1.Enity
         public double Amount { get; set; }
         public double Fee { get; set; }
         public string Message { get; set; }
-        public DateTime CreateAt { get; set; }
-        public DateTime UpdateAt { get; set; }
+        public DateTime CreatedAt { get; set; }
+        public DateTime UpdatedAt { get; set; }
         public TransactionStatus TransactionStatus { get; set; }
-        
+
         public override string ToString()
         {
             string return_string = TransactionCode + " | " + SenderAccountNumber + " | " + ReceiverAccountNumber +
                                    " | " + Amount + " | " + Fee + " | " + Message + " | ";
-            string final_return_string = return_string + CreateAt + " | " + UpdateAt + " | " + (TransactionStatus) TransactionStatus;
+            string final_return_string = return_string + CreatedAt + " | " + UpdatedAt + " | " +
+                                         (TransactionStatus) TransactionStatus;
             return final_return_string;
         }
     }
-    
-    
-    public enum TransactionType { WITHDRAW = 1, DEDPOSIT = 2, TRANSFER = 3 }
-    public enum TransactionStatus { PENDING = 1, DONE = 2, FAILS = 0 }
+
+
+    public enum TransactionType
+    {
+        WITHDRAW = 1,
+        DEDPOSIT = 2,
+        TRANSFER = 3
+    }
+
+    public enum TransactionStatus
+    {
+        PENDING = 1,
+        DONE = 2,
+        FAILS = 0
+    }
 }

@@ -9,8 +9,8 @@ namespace ConsoleApplication3.Resource.View
         public void MenuAdmin(Account account)
         {
             AdminController _adminController = new AdminController();
-            Console.WriteLine("_____ Ngân hàng Spring Hero Bank _____");
-            Console.WriteLine("Chào mừng Admin "+account.Fullname+" quay trở lại. Vui lòng chọn thao tác.");
+            Console.WriteLine("_________________________ Spring Hero Bank _________________________");
+            Console.WriteLine("Chào mừng Admin " + account.Fullname + " quay trở lại. Vui lòng chọn thao tác.");
             Console.WriteLine("1. Danh sách người dùng.");
             Console.WriteLine("2. Danh sách lịch sử giao dịch.");
             Console.WriteLine("3. Tìm kiếm người dùng theo tên.");
@@ -22,18 +22,18 @@ namespace ConsoleApplication3.Resource.View
             Console.WriteLine("9. Thay đổi thông tin tài khoản.");
             Console.WriteLine("10. Thay đổi thông tin mật khẩu.");
             Console.WriteLine("11. Thoát.");
-            Console.WriteLine("----------------------------");
+            Console.WriteLine("----------------------------------------------------------------------");
             Console.WriteLine("Nhập lựa chọn của bạn (Từ 1 đến 11):");
             var choice = int.Parse(Console.ReadLine());
             switch (choice)
             {
                 case 1:
                     Console.WriteLine("Danh sách người dùng.");
-                    _adminController.UserList(0,account);
+                    _adminController.UserList(0, account);
                     break;
                 case 2:
                     Console.WriteLine("Danh sách lịch sử giao dịch");
-                    _adminController.TransactionHistory(0,account);
+                    _adminController.TransactionHistory(0, account);
                     break;
                 case 3:
                     Console.WriteLine("Tìm kiếm tài khoản theo tên");
@@ -57,7 +57,7 @@ namespace ConsoleApplication3.Resource.View
                     break;
                 case 8:
                     Console.WriteLine("Search transaction history by account number");
-                    _adminController.TransactionSearch(0,account);
+                    _adminController.TransactionSearch(0, account);
                     break;
                 case 9:
                     Console.WriteLine("Change the account information");
@@ -71,11 +71,12 @@ namespace ConsoleApplication3.Resource.View
                     break;
             }
         }
+
         public void MenuUser(Account account)
         {
             UserController userController = new UserController();
             Console.WriteLine("_____ Ngân hàng Spring Hero Bank _____");
-            Console.WriteLine("Chào mừng "+account.Fullname+" quay trở lại. Vui lòng chọn thao tác.");
+            Console.WriteLine("Chào mừng " + account.Fullname + " quay trở lại. Vui lòng chọn thao tác.");
             Console.WriteLine("1. Gửi tiền.");
             Console.WriteLine("2. Rút tiền.");
             Console.WriteLine("3. Chuyển khoản.");
@@ -115,7 +116,7 @@ namespace ConsoleApplication3.Resource.View
                     break;
                 case 7:
                     Console.WriteLine("Truy vấn lịch sử giao dịch.");
-                    userController.transactionHistory(0,account);
+                    userController.transactionHistory(0, account);
                     break;
                 case 8:
                     break;
