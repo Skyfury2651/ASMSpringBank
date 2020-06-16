@@ -6,6 +6,69 @@ namespace ConsoleApplication3.Resource.View
 {
     public class Menu
     {
+        // [DllImport("kernel32.dll")]
+        // static extern bool SetConsoleOutputCP(uint wCodePageID);
+
+        public void BeginMenu()
+        {
+            // SetConsoleOutputCP(65001);
+            Account currentAccount = null;
+            while (currentAccount == null)
+            {
+                Console.WriteLine("\n");
+                Console.WriteLine(DateTime.Now);
+                Console.WriteLine("—— Spring Hero Bank ——");
+                Console.WriteLine("----------------------");
+                Console.WriteLine("1. Register.");
+                Console.WriteLine("2. Login.");
+                Console.WriteLine("3. Exit.");
+                Console.WriteLine("----------------------");
+                var choose = int.Parse(Console.ReadLine());
+                switch (choose)
+                {
+                    case 1:
+                        Console.Clear();
+                        Console.WriteLine("Register Form");
+                        new AccountController().Register();
+                        break;
+                    case 2:
+                        Console.Clear();
+                        Console.WriteLine("Login Form");
+                        Account loginAccount = new AccountController().Login();
+                        currentAccount = loginAccount;
+                        // Console.WriteLine(loginAccount);
+                        // Console.WriteLine(currentAccount);
+                        break;
+                    case 3:
+                        Console.WriteLine("Exit.");
+                        break;
+                    default:
+                        Console.WriteLine("Invalid choice.");
+                        break;
+                }
+
+                if (choose == 3)
+                {
+                    break;
+                }
+            }
+
+            // Console.WriteLine(currentAccount.Role);
+            // Console.WriteLine((int)currentAccount.Role);
+            if ((int) currentAccount.Role == 1)
+            {
+                Console.Clear();
+                new Menu().MenuAdmin(currentAccount);
+            }
+            else
+            {
+                while (true)
+                {
+                    new Menu().MenuUser(currentAccount);
+                }
+            }
+        }
+
         public void MenuAdmin(Account account)
         {
             AdminController _adminController = new AdminController();
