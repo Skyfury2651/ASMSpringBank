@@ -30,7 +30,6 @@ namespace ConsoleApplication2.Controller
         {
             try
             {
-                int[] arr = new[] {1, 2, 3, 4, 5, 6, 7, 8, 9};
                 Console.Clear();
                 Console.WriteLine("Enter Username:");
                 var username = Console.ReadLine();

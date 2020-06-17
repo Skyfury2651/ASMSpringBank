@@ -40,16 +40,11 @@ namespace ConsoleApplication3.Resource.View
                         // Console.WriteLine(currentAccount);
                         break;
                     case 3:
-                        Console.WriteLine("Exit.");
+                        Environment.Exit(0);
                         break;
                     default:
                         Console.WriteLine("Invalid choice.");
                         break;
-                }
-
-                if (choose == 3)
-                {
-                    break;
                 }
             }
 
@@ -72,6 +67,7 @@ namespace ConsoleApplication3.Resource.View
         public void MenuAdmin(Account account)
         {
             AdminController _adminController = new AdminController();
+            Console.WriteLine("\n");
             Console.WriteLine("_________________________ Spring Hero Bank _________________________");
             Console.WriteLine("Chào mừng Admin " + account.Fullname + " quay trở lại. Vui lòng chọn thao tác.");
             Console.WriteLine("1. Danh sách người dùng.");
@@ -124,7 +120,7 @@ namespace ConsoleApplication3.Resource.View
                     break;
                 case 9:
                     Console.WriteLine("Change the account information");
-                    _adminController.ChangegInform(account);
+                    _adminController.ChangeInfo(account);
                     break;
                 case 10:
                     Console.WriteLine("Change password information");
@@ -138,7 +134,8 @@ namespace ConsoleApplication3.Resource.View
         public void MenuUser(Account account)
         {
             UserController userController = new UserController();
-            Console.WriteLine("_____ Ngân hàng Spring Hero Bank _____");
+            Console.WriteLine("\n");
+            Console.WriteLine("_________________________ Spring Hero Bank _________________________");
             Console.WriteLine("Chào mừng " + account.Fullname + " quay trở lại. Vui lòng chọn thao tác.");
             Console.WriteLine("1. Gửi tiền.");
             Console.WriteLine("2. Rút tiền.");

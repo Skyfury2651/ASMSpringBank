@@ -245,14 +245,13 @@ namespace ConsoleApplication1.Model
             String currentDate = dateTime.ToString("yyyy-MM-dd HH:mm:ss");
             cnn.Open();
             var stringCommand =
-                "INSERT INTO `useraccount`(`ID`,`AccountNumber`, `Balance`, `Username`, `PasswordHash`, `Salt`, `Fullname`, `Email`,`PhoneNumber`, `Role`, `Status`,`CreatedAt`,`UpdatedAt`) " +
-                $"VALUES ('NULL','{account.AccountNumber}','{account.Balance}','{account.Username}','{account.PasswordHash}','{account.Salt}','{account.Fullname}','{account.Email}','{account.PhoneNumber}','NULL','{(int) account.Status}','{currentDate}','{currentDate}')";
+                $"INSERT INTO `useraccount`(`ID`, `AccountNumber`, `Balance`, `Username`, `PasswordHash`, `Salt`, `Fullname`, `Email`, `PhoneNumber`, `Status`, `CreatedAt`, `UpdatedAt`) VALUES (NULL, '{account.AccountNumber}','{account.Balance}','{account.Username}','{account.PasswordHash}','{account.Salt}','{account.Fullname}','{account.Email}','{account.PhoneNumber}', '{(int) account.Status}', '{currentDate}', '{currentDate}')";
             MySqlCommand cmd =
                 new MySqlCommand(stringCommand, cnn);
-            cmd.ExecuteNonQuery();
             // Console.WriteLine(stringCommand);
+            cmd.ExecuteNonQuery();
             cnn.Close();
-            Console.WriteLine("Created Account Success");
+            Console.WriteLine("\nCreated Account Success");
         }
 
         public void LockOpen(Account account, string accountNumber, int status)
